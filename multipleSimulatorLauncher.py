@@ -1,5 +1,6 @@
 import os
 import subprocess
+from joblib import Parallel, delayed
 
 SIMULATOR_LIST_PATH = 'MultipleSimulatorList.txt'
 CONFIGURATION_FILE_PATH = 'ProjectConfiguration.yaml'
@@ -111,5 +112,15 @@ def getSimulatorListForLaunch(path):
 		selectedList = getSelectedSimulatorList()
 		writeNewSimulatorsIntoFile(path,selectedList)
 		return selectedList
+
+#Simulator Launcher part
+def createBashScriptForLaunchSimulator(simulatorId,pC):
+	deneme = subprocess.check_call("sh simulatorLauncher.sh %s %s %s %s" % (simulatorId,pC.bundleIdentifier,pC.name,pC.appName), shell=True)
+
+def runParalelSimulatorLaunchForSelectedOnes(simulatorList,projectConfiguration):
+	results = Parallel(n_jobs=5)(delayed(createBashScriptForLaunchSimulator)(i,projectConfiguration) for i in simulatorList)
+	print("All subprocesses is completed")
+
+
 
 
