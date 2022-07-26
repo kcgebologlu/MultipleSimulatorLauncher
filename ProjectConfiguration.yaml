@@ -1,0 +1,3 @@
+  projectName: Example # project workspace name in general can be found in derived data folder
+  projectBundleIdentifier: com.whoyouare.example # project bundle name given in general section of xcode project file 
+  projectAppName: Example.app # check out the derived data folder till you find .app file

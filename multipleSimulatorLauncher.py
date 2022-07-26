@@ -1,6 +1,8 @@
 import os
 import subprocess
 from joblib import Parallel, delayed
+import yaml 
+from yaml.loader import SafeLoader
 
 SIMULATOR_LIST_PATH = 'MultipleSimulatorList.txt'
 CONFIGURATION_FILE_PATH = 'ProjectConfiguration.yaml'
@@ -120,6 +122,22 @@ def createBashScriptForLaunchSimulator(simulatorId,pC):
 def runParalelSimulatorLaunchForSelectedOnes(simulatorList,projectConfiguration):
 	results = Parallel(n_jobs=5)(delayed(createBashScriptForLaunchSimulator)(i,projectConfiguration) for i in simulatorList)
 	print("All subprocesses is completed")
+
+# project configuration parser
+class ProjectDetails:
+	def __init__(self, rawValue):
+		self.name = rawValue.get("projectName")
+		self.bundleIdentifier = rawValue.get("projectBundleIdentifier")
+		self.appName = rawValue.get("projectAppName")
+	def printDetails(self):
+		print(self.name)
+		print(self.bundleIdentifier)
+		print(self.appName)
+
+def getProjectConfiguration(path):
+	yamlFile = open(path,'r')
+	data = yaml.load(yamlFile, Loader=SafeLoader)
+	return ProjectDetails(data)
 
 
 
