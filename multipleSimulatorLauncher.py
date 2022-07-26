@@ -55,3 +55,32 @@ def simulatorListGetterAndPrint():
 			counterForSelectingItems += 1
 			collector.append(Simulator(line))
 	return collector, counterForSelectingItems
+
+def checkUserWantsToAddNumber(question, finishAnswer, maxNumber):
+	answer = input(str(question)+ " " +"Selected Simulator Number/ to finish add new simulator just type "+ str(finishAnswer) + " ");
+	if answer == finishAnswer:
+		return -2
+	try:
+		userSelection = int(answer)
+		if userSelection > 0 and userSelection <= maxNumber:
+			return userSelection
+		else:
+			return 0 # means that user provide a larger number then simulator list
+	except:
+		return -1 # false data provided by user
+
+def selectedNumberList(maxNumber):
+	userWantsToAddNewNumber = True
+	selectedNumbers = set([])
+	while userWantsToAddNewNumber:
+		result = checkUserWantsToAddNumber("Which simulator do you want to test?","f", maxNumber)
+		if result == -2:
+			userWantsToAddNewNumber = False
+		elif result == -1:
+			print("Please provide number or type f")
+		elif result == 0:
+			print("Please provide a number within the simulator list number")
+		else:
+			selectedNumbers.add(result)
+	return list(selectedNumbers)
+
