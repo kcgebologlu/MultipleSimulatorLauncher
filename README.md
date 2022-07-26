@@ -28,9 +28,7 @@ This is a simply a terminal based project for serving that purpose.
 ## Authors
 * **Korhan Çağın Geboloğlu** - *Initial work* - [kcgebologlu](https://github.com/kcgebologlu)
 
-https://github.com/kcgebologlu
-
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md]() file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/kcgebologlu/MultipleSimulatorLauncher/blob/main/LICENSE.md) file for details
 
