@@ -103,4 +103,13 @@ def writeNewSimulatorsIntoFile(path,simulatorList):
 	[file1.write(x+"\n") for x in simulatorList]
 	file1.close()
 
+def getSimulatorListForLaunch(path):
+	if isSavedSimulatorListUsable(path):
+		return getSavedSimulatorList(path)
+	else:
+		print("will bring up the simulator list")
+		selectedList = getSelectedSimulatorList()
+		writeNewSimulatorsIntoFile(path,selectedList)
+		return selectedList
+
 
