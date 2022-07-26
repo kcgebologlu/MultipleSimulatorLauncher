@@ -84,3 +84,17 @@ def selectedNumberList(maxNumber):
 			selectedNumbers.add(result)
 	return list(selectedNumbers)
 
+def getTheSelectedSimulatorsInfo(items,selectedPositions):
+	collector = []
+	for selectedPosition in selectedPositions:
+		collector.append(items[selectedPosition-1].id)
+	return collector
+
+def getSelectedSimulatorList():
+	lines, maxNumber = simulatorListGetterAndPrint()
+	selectedNumbers = selectedNumberList(maxNumber)
+	return getTheSelectedSimulatorsInfo(lines,selectedNumbers)
+
+
+
+
