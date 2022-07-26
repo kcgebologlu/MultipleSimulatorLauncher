@@ -95,6 +95,12 @@ def getSelectedSimulatorList():
 	selectedNumbers = selectedNumberList(maxNumber)
 	return getTheSelectedSimulatorsInfo(lines,selectedNumbers)
 
+def getSavedSimulatorList(path):
+	return [x[:-1] for x in open(path, 'r').readlines()]
 
+def writeNewSimulatorsIntoFile(path,simulatorList):
+	file1 = open(path, 'w')
+	[file1.write(x+"\n") for x in simulatorList]
+	file1.close()
 
 
