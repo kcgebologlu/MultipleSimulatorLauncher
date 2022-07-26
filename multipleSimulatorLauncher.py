@@ -139,6 +139,14 @@ def getProjectConfiguration(path):
 	data = yaml.load(yamlFile, Loader=SafeLoader)
 	return ProjectDetails(data)
 
+# main progress 
+def runner():
+	selectedSimulators = getSimulatorListForLaunch(SIMULATOR_LIST_PATH)
+	projectConfiguration = getProjectConfiguration(CONFIGURATION_FILE_PATH)
+	runParalelSimulatorLaunchForSelectedOnes(selectedSimulators,projectConfiguration)
+runner()
+
+
 
 
 
