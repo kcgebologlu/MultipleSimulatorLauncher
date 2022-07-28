@@ -9,7 +9,7 @@ CONFIGURATION_FILE_PATH = 'ProjectConfiguration.yaml'
 def checkSimulatorListExist(path):
 	if os.path.isfile(path):
 		return True
-	return false
+	return False
 
 def checkUserInputIsAcceptable(question, firstAnswer, secondAnswer):
 	answer = input(question+ " " + firstAnswer +"/"+ secondAnswer + " ");
